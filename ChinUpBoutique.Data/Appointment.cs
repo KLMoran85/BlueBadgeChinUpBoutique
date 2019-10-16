@@ -12,7 +12,7 @@ namespace ChinUpBoutique.Data
         public int AppointmentId { get; set; }
         [Required]
         public int UserId { get; set; }
-        [ForeignKey]
+        
         public int StylistId { get; set; }
         [Required]
         public DateTime DateTime { get; set; }

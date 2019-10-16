@@ -27,13 +27,13 @@ namespace ChinUpBoutique.WebMVC
                 role.Name = "Admin";
                 roleManager.Create(role);
 
-                var uer = new ApplicationUser();
-                user.UserName = "kvlmoran85";
+                var user = new ApplicationUser();
                 user.Email = "kvlmoran85@yahoo.com";
+                user.UserName = user.Email;
 
                 string userPWD = "A@19856712";
 
-                var chkUser = UserManager.Create(userPWD, userPWD);
+                var chkUser = UserManager.Create(user, userPWD);
 
                 if (chkUser.Succeeded)
                 {
@@ -41,10 +41,10 @@ namespace ChinUpBoutique.WebMVC
                 }
             }
 
-            if (!roleManager.RoleExists("Manager"))
+            if (!roleManager.RoleExists("Stylist"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Manager";
+                role.Name = "Stylist";
                 roleManager.Create(role);
             }
 

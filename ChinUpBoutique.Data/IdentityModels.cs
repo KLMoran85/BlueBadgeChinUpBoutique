@@ -51,7 +51,7 @@ namespace ChinUpBoutique.Data
     {
         public IdentityUserLoginConfiguration()
         {
-            HasKey(IdentityUserLogin => IdentityUserLogin.UserId);
+            HasKey(iul => iul.UserId);
         }
     }
 
@@ -59,7 +59,7 @@ namespace ChinUpBoutique.Data
     {
         public IdentityUserRoleConfiguration()
         {
-            HasKey(IdentityUserRole => IdentityUserRole.UserId);
+            HasKey(iur => iur.UserId);
         }
     }
 }
