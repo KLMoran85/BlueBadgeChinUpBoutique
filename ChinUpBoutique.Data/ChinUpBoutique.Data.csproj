@@ -56,11 +56,35 @@
   <ItemGroup>
     <Compile Include="Appointment.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\201910162037463_InitialCreate.cs" />
+    <Compile Include="Migrations\201910162037463_InitialCreate.Designer.cs">
+      <DependentUpon>201910162037463_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910162236586_changestodatabase.cs" />
+    <Compile Include="Migrations\201910162236586_changestodatabase.Designer.cs">
+      <DependentUpon>201910162236586_changestodatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910162346399_addeddatetimepicker.cs" />
+    <Compile Include="Migrations\201910162346399_addeddatetimepicker.Designer.cs">
+      <DependentUpon>201910162346399_addeddatetimepicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910162037463_InitialCreate.resx">
+      <DependentUpon>201910162037463_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910162236586_changestodatabase.resx">
+      <DependentUpon>201910162236586_changestodatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910162346399_addeddatetimepicker.resx">
+      <DependentUpon>201910162346399_addeddatetimepicker.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

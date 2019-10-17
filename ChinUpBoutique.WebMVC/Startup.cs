@@ -41,10 +41,10 @@ namespace ChinUpBoutique.WebMVC
                 }
             }
 
-            if (!roleManager.RoleExists("Stylist"))
+            if (!roleManager.RoleExists("StylistUser"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Stylist";
+                role.Name = "StylistUser";
                 roleManager.Create(role);
             }
 
