@@ -15,6 +15,10 @@ namespace ChinUpBoutique.Models
         [Required]
         [Display(Name = "Customer's Last Name")]
         public string CustomerLastName { get; set; }
+        public string EmailAddress { get; set; }
+        [Required]
+      
+        public string PhoneNumber { get; set; }
         [Required]
         [Display (Name = "Choose a Stylist")] 
         public string StylistID { get; set; }

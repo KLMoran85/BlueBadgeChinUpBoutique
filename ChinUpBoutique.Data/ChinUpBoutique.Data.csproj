@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201910162346399_addeddatetimepicker.Designer.cs">
       <DependentUpon>201910162346399_addeddatetimepicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910212019006_updatedcodetest.cs" />
+    <Compile Include="Migrations\201910212019006_updatedcodetest.Designer.cs">
+      <DependentUpon>201910212019006_updatedcodetest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910162346399_addeddatetimepicker.resx">
       <DependentUpon>201910162346399_addeddatetimepicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910212019006_updatedcodetest.resx">
+      <DependentUpon>201910212019006_updatedcodetest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

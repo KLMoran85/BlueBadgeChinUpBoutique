@@ -54,11 +54,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppointmentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StylistsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChinUpBoutique.Data\ChinUpBoutique.Data.csproj">
+      <Project>{bcc0998d-8553-4ad3-aff4-fac824f83668}</Project>
+      <Name>ChinUpBoutique.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChinUpBoutique.Models\ChinUpBoutique.Models.csproj">
+      <Project>{6a168c7d-5875-453a-80ce-81a23c699195}</Project>
+      <Name>ChinUpBoutique.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

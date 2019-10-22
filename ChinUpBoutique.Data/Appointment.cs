@@ -21,7 +21,7 @@ namespace ChinUpBoutique.Data
     {   [Key]
         public int AppointmentID { get; set; }
         [Required]
-        public int UserID { get; set; }
+        public int CustomerID { get; set; }
         [ForeignKey("StylistUser")]
         public string StylistID { get; set; }
         public virtual ApplicationUser StylistUser { get; set; }
