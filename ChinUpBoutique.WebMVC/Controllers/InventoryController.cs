@@ -8,7 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace ChinUpBoutique.WebMVC.Controllers
-{   [Authorize]
+{
+    [Authorize]
     public class InventoryController : Controller
     {
         // GET: Inventory
@@ -29,19 +30,42 @@ namespace ChinUpBoutique.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(InventoryCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
+            var service = CreateInventoryService();
+
+            if (service.CreateInventory(model))
+            {
+                TempData["SaveResult"] = "Your inventory item was created successfully";
+
+                return RedirectToAction("Index");
+            };
+            return View(model);
+
+            ModelState.AddModelError("", "Inventory could not be created.");
+
+            return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var svc = CreateInventoryService();
+            var model = svc.GetInventoryById(id);
+
+            return View(model);
+        }
+
+        private InventoryService CreateInventoryService()
+        {
             var userId = Guid.Parse(User.Identity.GetUserId());
 
             var service = new InventoryService(userId);
-
-            service.CreateInventory(model);
-
-            return RedirectToAction("Index");
-            
+            return service;
         }
+
+       
     }
 }

@@ -52,7 +52,7 @@ namespace ChinUpBoutique.Services
                                 {
                                     ItemID = e.ItemID,
                                     ItemName = e.ItemName,
-                                    SkuNumber = Convert.ToInt32(e.SkuNumber),
+                                    SkuNumber = e.SkuNumber,
                                     ItemDescription = e.ItemDescription,
                                     ItemPrice = e.ItemPrice,
                                     TypeOfItem = e.TypeOfItem
@@ -62,6 +62,30 @@ namespace ChinUpBoutique.Services
                 return query.ToArray();
             }
 
+        }
+
+        public InventoryDetail GetInventoryById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Inventory.Single(e => e.ItemID == id);
+
+                return
+                    new InventoryDetail
+                    {
+                        ItemID = entity.ItemID,
+                        ItemName = entity.ItemName,
+                        SkuNumber = entity.SkuNumber,
+                        ItemDescription = entity.ItemDescription,
+                        ItemPrice = entity.ItemPrice,
+                        TypeOfItem = entity.TypeOfItem
+                    };
+
+            }
+
+                
         }
     }
 }

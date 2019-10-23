@@ -65,6 +65,14 @@
     <Compile Include="Migrations\201910221950027_addedinventorydatatodb.Designer.cs">
       <DependentUpon>201910221950027_addedinventorydatatodb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910231532526_updatedinventorycode.cs" />
+    <Compile Include="Migrations\201910231532526_updatedinventorycode.Designer.cs">
+      <DependentUpon>201910231532526_updatedinventorycode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910232017397_updatedinventorycode1.cs" />
+    <Compile Include="Migrations\201910232017397_updatedinventorycode1.Designer.cs">
+      <DependentUpon>201910232017397_updatedinventorycode1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +86,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910221950027_addedinventorydatatodb.resx">
       <DependentUpon>201910221950027_addedinventorydatatodb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910231532526_updatedinventorycode.resx">
+      <DependentUpon>201910231532526_updatedinventorycode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910232017397_updatedinventorycode1.resx">
+      <DependentUpon>201910232017397_updatedinventorycode1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

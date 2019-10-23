@@ -8,23 +8,24 @@ using System.Threading.Tasks;
 
 namespace ChinUpBoutique.Models
 {
-    public class InventoryListItem
+    public class InventoryDetail
     {
         [Key]
-        [Display (Name = "Item ID")]
+        [Display(Name = "Item ID")]
         public int ItemID { get; set; }
-        [Display (Name = "Item Name")]
+        [Required]
+        [Display(Name = "Item Name")]
         public string ItemName { get; set; }
         [Required]
-        [Display (Name = "Sku Number")]
+        [Display(Name = "Sku Number")]
         public string SkuNumber { get; set; }
-        [Display (Name = "Item Description")]
+        [Required]
+        [Display(Name = "Item Description")]
         public string ItemDescription { get; set; }
-        [Display (Name = "Price")]
+        [Display(Name = "Item Price")]
         public double ItemPrice { get; set; }
         [Required]
-        [Display (Name = "Item Type")]
+        [Display(Name = "Item Type")]
         public ItemType TypeOfItem { get; set; }
-
     }
 }
