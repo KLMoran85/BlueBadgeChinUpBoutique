@@ -34,6 +34,8 @@ namespace ChinUpBoutique.Data
 
         public DbSet<Appointment> Appointments { get; set; }
 
+        public DbSet<Inventory> Inventory { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

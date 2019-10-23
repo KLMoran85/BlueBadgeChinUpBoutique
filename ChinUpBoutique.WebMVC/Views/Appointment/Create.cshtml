@@ -51,21 +51,21 @@
         </div>
     </div>
 
+    @*@<div class="form-group">
+        @Html.LabelFor(model => model.StylistID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.StylistID, "select StylistUser", new { @class = "form-control" }) 
+            @Html.ValidationMessageFor(model => model.StylistID, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+
     <div class="form-group">
-        @Html.LabelFor(model => model.DateOfAppointment,
-            htmlAttributes: new { @class = "control-label col-md-3" })
         <div class="col-md-8">
-            @Html.EditorFor(model => model.DateOfAppointment,
-               new
-                    {
-                        htmlAttributes = new
-                        {
-                 @Value = DateTime.Now.ToString("MM/dd/yyyy"),
-                 @class = "form-control DateOfAppointment"
-                        },
-                    })
+            @Html.TextBoxFor(model => model.DateOfAppointment, new { type = "datetime-local" })
+
             @Html.ValidationMessageFor(model => model.DateOfAppointment, "", new { @class = "text-danger" })
-            </div>
+        </div>
     </div>
 
     <div class="form-group">
@@ -88,19 +88,8 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-  @Scripts.Render("~/bundles/jqueryval")
 
-    <script type="text/javascript">
-    $(function () {
-    $('.DateOfAppointment').datetimepicker({
-    defaultDate: '@DateTime.Now',
-    format: 'L',
-    showClose: true,
-    showClear: true,
-    toolbarPlacement: 'top'
-    });
-    @*$('#DateOfAppointment').datetimepicker({
+@*$('#DateOfAppointment').datetimepicker({
     defaultDate: '@Model.DateOfAppointment',
     format: 'LT',
     showClose: true,
@@ -108,7 +97,7 @@
     toolbarPlacement: 'top',
     stepping: 15
     });*@
-    });
-        </script>
-    }
+            });
+            </script>
+        }
 

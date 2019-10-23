@@ -56,11 +56,20 @@
   <ItemGroup>
     <Compile Include="AppointmentCreate.cs" />
     <Compile Include="AppointmentListItem.cs" />
+    <Compile Include="InventoryCreate.cs" />
+    <Compile Include="InventoryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stylists.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChinUpBoutique.Data\ChinUpBoutique.Data.csproj">
+      <Project>{BCC0998D-8553-4AD3-AFF4-FAC824F83668}</Project>
+      <Name>ChinUpBoutique.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

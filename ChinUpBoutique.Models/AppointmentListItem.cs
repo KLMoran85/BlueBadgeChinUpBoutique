@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChinUpBoutique.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ChinUpBoutique.Models
 {
-    public enum AppointmentType { Casual = 1, Business, Evening, SpecialEvent }
+    //public enum AppointmentType { Casual = 1, Business, Evening, SpecialEvent }
     public class AppointmentListItem
     {
         public int AppointmentID { get; set; }

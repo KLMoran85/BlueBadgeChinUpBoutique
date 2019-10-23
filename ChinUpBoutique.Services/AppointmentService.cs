@@ -15,29 +15,37 @@ namespace ChinUpBoutique.Services
         public AppointmentService(Guid userId)
         {
             _userId = userId;
+        }
+        public bool CreateAppointment(AppointmentCreate model)
+        {
+            var entity =
+                 new Appointment()
+                 {
 
-            public bool CreateAppointment(AppointmentCreate model)
+                     CustomerID = _userId,
+                     DateOfAppointment = model.DateOfAppointment,
+                     StylistID = model.StylistID,
+                     Comment = model.Comment,
+                     CustomerFirstName = model.CustomerFirstName,
+                     CustomerLastName = model.CustomerLastName,
+                     TypeOfAppointment = model.TypeOfAppointment,
+                     EmailAddress = model.EmailAddress
+
+
+
+                 };
+
+                using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                     new Appointment()
-                     {
-
-                        CustomerID = _userId;
-                        DateOfAppointment = Datetime,
-                        Comment = model.Comment,
-                        CustomerFirstName = model.CustomerFirstName,
-                        CustomerLastName = model.CustomerLastName,
-                        AppointmentType = model.TypeOfAppointment
-                    
-                
-                
-                     }; 
-                        
-                     
+                ctx.Appointments.Add(entity);
+                return ctx.SaveChanges() == 1;
             }
+
+
         }
     }
 }
+
   
 
 

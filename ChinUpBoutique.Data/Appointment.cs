@@ -7,21 +7,22 @@ using System.Text;
 namespace ChinUpBoutique.Data
 { //{ Casual = 1, Business, Evening, SpecialEvent }
     public enum AppointmentType
-    {[Display(Name = "First Value - Casual")]
+    {[Display(Name = "Casual")]
         Casual,
-        [Display(Name = "Second Value - Business")]
+        [Display(Name = "Business")]
         Business,
 
-        [Display(Name = "Third Value - Evening")]
+        [Display(Name = "Evening")]
         Evening,
-        [Display(Name = "Fourth Value - Special Event")]
+        [Display(Name = "Special Event")]
         SpecialEvent
     }
     public class Appointment
-    {   [Key]
+    {
+        [Key]
         public int AppointmentID { get; set; }
         [Required]
-        public int CustomerID { get; set; }
+        public Guid? CustomerID { get; set; }
         [ForeignKey("StylistUser")]
         public string StylistID { get; set; }
         public virtual ApplicationUser StylistUser { get; set; }
@@ -34,8 +35,10 @@ namespace ChinUpBoutique.Data
         public string CustomerFirstName { get; set; }
         [Required]
         public string CustomerLastName { get; set; }
+        public string EmailAddress { get; set; }
         [Required]
-
+        public string PhoneNumber { get; set; }
+        [Required]
         public AppointmentType TypeOfAppointment { get; set; } 
 
     }

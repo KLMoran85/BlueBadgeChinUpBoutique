@@ -1,4 +1,5 @@
 ﻿using ChinUpBoutique.Data;
+using ChinUpBoutique.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,14 @@ namespace ChinUpBoutique.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var role = ctx.Roles.Single(e => e.Name == "StylistUser").Id;
-                var st = ctx.Users.Where(e => e.Roles.First().RoleId == role ).ToList();
+                var stylists = ctx.Users
+                    .Where(e => e.Roles.First().RoleId == role )
+                    .Select(e => new Stylists {
+                        StylistID = e.Id,
+                        StylistUser = e,
+                        StylistUserName = e.UserName
+                    })
+                 .ToList();
 
 
             }

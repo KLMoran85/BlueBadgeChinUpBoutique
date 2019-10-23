@@ -7,13 +7,13 @@ namespace ChinUpBoutique.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class updatedcodetest : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updatedcodetest));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910212019006_updatedcodetest"; }
+            get { return "201910221802023_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

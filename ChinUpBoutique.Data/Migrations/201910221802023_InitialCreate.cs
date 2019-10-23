@@ -12,10 +12,14 @@ namespace ChinUpBoutique.Data.Migrations
                 c => new
                     {
                         AppointmentID = c.Int(nullable: false, identity: true),
-                        UserID = c.Int(nullable: false),
+                        CustomerID = c.Guid(),
                         StylistID = c.String(maxLength: 128),
-                        DateTime = c.DateTime(nullable: false),
+                        DateOfAppointment = c.DateTime(nullable: false),
                         Comment = c.String(nullable: false),
+                        CustomerFirstName = c.String(nullable: false),
+                        CustomerLastName = c.String(nullable: false),
+                        EmailAddress = c.String(),
+                        PhoneNumber = c.String(nullable: false),
                         TypeOfAppointment = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.AppointmentID)

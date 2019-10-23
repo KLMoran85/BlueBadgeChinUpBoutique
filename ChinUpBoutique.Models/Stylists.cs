@@ -10,7 +10,7 @@ namespace ChinUpBoutique.Models
     public class Stylists
     {
         public string StylistID { get; set; }
-        public virtual ApplicationUser StylistUser { get; set; }
+        public ApplicationUser StylistUser { get; set; }
         public string StylistUserName { get; set; }
 
     }
