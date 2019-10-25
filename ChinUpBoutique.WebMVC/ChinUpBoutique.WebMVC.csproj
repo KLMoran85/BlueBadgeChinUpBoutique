@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserReviewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -254,6 +255,15 @@
     <Content Include="Views\Inventory\Index.cshtml" />
     <Content Include="Views\Inventory\Create.cshtml" />
     <Content Include="Views\Inventory\Details.cshtml" />
+    <Content Include="Views\Inventory\Edit.cshtml" />
+    <Content Include="Views\Inventory\Delete.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\UserReview\Index.cshtml" />
+    <Content Include="Views\UserReview\Create.cshtml" />
+    <Content Include="Views\UserReview\Details.cshtml" />
+    <Content Include="Views\UserReview\Edit.cshtml" />
+    <Content Include="Views\UserReview\Delete.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTimeOffset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

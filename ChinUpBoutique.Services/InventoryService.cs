@@ -87,5 +87,44 @@ namespace ChinUpBoutique.Services
 
                 
         }
+
+        public bool UpdateInventory(InventoryEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                      .Inventory
+                      .Single(e => e.ItemID == model.ItemID);
+
+                entity.ItemID = model.ItemID;
+                entity.ItemName = model.ItemName;
+                entity.SkuNumber = model.SkuNumber;
+                entity.ItemDescription = model.ItemDescription;
+                entity.ItemPrice = model.ItemPrice;
+                entity.TypeOfItem = model.TypeOfItem;
+
+                return ctx.SaveChanges() == 1;
+            }
+
+        }
+
+        public bool DeleteInventory(int ItemID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Inventory
+                        .Single(e => e.ItemID == ItemID);
+
+                ctx.Inventory.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
     }
 }
+

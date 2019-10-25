@@ -36,6 +36,8 @@ namespace ChinUpBoutique.Data
 
         public DbSet<Inventory> Inventory { get; set; }
 
+        public DbSet<UserReview> UserReviews { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

@@ -73,8 +73,26 @@
     <Compile Include="Migrations\201910232017397_updatedinventorycode1.Designer.cs">
       <DependentUpon>201910232017397_updatedinventorycode1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910241842214_ThirdTableAddedforUserReviews.cs" />
+    <Compile Include="Migrations\201910241842214_ThirdTableAddedforUserReviews.Designer.cs">
+      <DependentUpon>201910241842214_ThirdTableAddedforUserReviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241906495_MorecodeforThirdLayer.cs" />
+    <Compile Include="Migrations\201910241906495_MorecodeforThirdLayer.Designer.cs">
+      <DependentUpon>201910241906495_MorecodeforThirdLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910242006420_EvenMorecodeforThirdLayer.cs" />
+    <Compile Include="Migrations\201910242006420_EvenMorecodeforThirdLayer.Designer.cs">
+      <DependentUpon>201910242006420_EvenMorecodeforThirdLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910250239130_MorecodeforThirdLayer1.cs" />
+    <Compile Include="Migrations\201910250239130_MorecodeforThirdLayer1.Designer.cs">
+      <DependentUpon>201910250239130_MorecodeforThirdLayer1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserReview.cs" />
+    <Compile Include="UserReviewCreate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -92,6 +110,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910232017397_updatedinventorycode1.resx">
       <DependentUpon>201910232017397_updatedinventorycode1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241842214_ThirdTableAddedforUserReviews.resx">
+      <DependentUpon>201910241842214_ThirdTableAddedforUserReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241906495_MorecodeforThirdLayer.resx">
+      <DependentUpon>201910241906495_MorecodeforThirdLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910242006420_EvenMorecodeforThirdLayer.resx">
+      <DependentUpon>201910242006420_EvenMorecodeforThirdLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910250239130_MorecodeforThirdLayer1.resx">
+      <DependentUpon>201910250239130_MorecodeforThirdLayer1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

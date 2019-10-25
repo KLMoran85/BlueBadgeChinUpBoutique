@@ -66,6 +66,72 @@ namespace ChinUpBoutique.WebMVC.Controllers
             return service;
         }
 
-       
+        public ActionResult Edit(int id)
+        {
+            var service = CreateInventoryService();
+            var detail = service.GetInventoryById(id);
+            var model =
+                new InventoryEdit
+                {
+                    ItemID = detail.ItemID,
+                    ItemName = detail.ItemName,
+                    SkuNumber = detail.SkuNumber,
+                    ItemDescription = detail.ItemDescription,
+                    ItemPrice = detail.ItemPrice
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, InventoryEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.ItemID != id)
+            {
+                ModelState.AddModelError("", "ID Mismatch");
+                return View(model);
+            }
+
+            var service = CreateInventoryService();
+
+            if (service.UpdateInventory(model))
+            {
+                TempData["SaveRestult"] = "Your Inventory item was updated.";
+
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your Inventory item could not be updated.");
+
+            return View(model);
+
+            
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateInventoryService();
+            var model = svc.GetInventoryById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateInventoryService();
+
+            service.DeleteInventory(id);
+
+            TempData["SaveResult"] = "Your Inventory item was deleted";
+
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
