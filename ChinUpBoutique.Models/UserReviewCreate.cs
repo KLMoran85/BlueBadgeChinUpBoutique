@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChinUpBoutique.Data
+namespace ChinUpBoutique.Models
 {
     public class UserReviewCreate
-       
-    {   [Required]
+    {
+        [Required]
         public string StylistID { get; set; }
         [Required]
         public string Title { get; set; }
@@ -17,3 +17,4 @@ namespace ChinUpBoutique.Data
         public string Content { get; set; }
     }
 }
+

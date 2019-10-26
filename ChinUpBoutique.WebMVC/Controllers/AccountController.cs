@@ -169,7 +169,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
                     //Assign Role to user Here
                     await this.UserManager.AddToRoleAsync(user.Id, "Customer");
                     //Ends Here
-                    return RedirectToAction("Index", "Users");
+                    return RedirectToAction("Index");
 
                 }
                 //ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");

@@ -35,7 +35,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
         }
 
-        public ActionResult Create()
+        public ActionResult Edit(string userId)
         {
             var Role = new IdentityRole();
             return View(Role);
@@ -47,6 +47,8 @@ namespace ChinUpBoutique.WebMVC.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
 
     }
 }

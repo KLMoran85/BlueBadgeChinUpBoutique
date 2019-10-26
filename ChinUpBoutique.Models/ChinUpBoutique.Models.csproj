@@ -62,9 +62,11 @@
     <Compile Include="InventoryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stylists.cs" />
+    <Compile Include="UserReviewCreate.cs" />
     <Compile Include="UserReviewEdit.cs" />
     <Compile Include="UserReviewDetail.cs" />
     <Compile Include="UserReviewListItem.cs" />
+    <Compile Include="UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
