@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ChinUpBoutique.Data
-{ //{ Casual = 1, Business, Evening, SpecialEvent }
+{ 
     public enum AppointmentType
     {[Display(Name = "Casual")]
         Casual,

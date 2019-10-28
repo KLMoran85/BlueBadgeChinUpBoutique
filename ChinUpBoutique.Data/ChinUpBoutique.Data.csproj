@@ -89,6 +89,14 @@
     <Compile Include="Migrations\201910250239130_MorecodeforThirdLayer1.Designer.cs">
       <DependentUpon>201910250239130_MorecodeforThirdLayer1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910280130409_rolecodeadded.cs" />
+    <Compile Include="Migrations\201910280130409_rolecodeadded.Designer.cs">
+      <DependentUpon>201910280130409_rolecodeadded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910281535412_Apptcreatecodeadded.cs" />
+    <Compile Include="Migrations\201910281535412_Apptcreatecodeadded.Designer.cs">
+      <DependentUpon>201910281535412_Apptcreatecodeadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserReview.cs" />
@@ -121,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910250239130_MorecodeforThirdLayer1.resx">
       <DependentUpon>201910250239130_MorecodeforThirdLayer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910280130409_rolecodeadded.resx">
+      <DependentUpon>201910280130409_rolecodeadded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910281535412_Apptcreatecodeadded.resx">
+      <DependentUpon>201910281535412_Apptcreatecodeadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

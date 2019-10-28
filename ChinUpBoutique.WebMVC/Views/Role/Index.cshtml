@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ChinUpBoutique.Data.ApplicationUser>
+﻿@*@model IEnumerable<ChinUpBoutique.Data.ApplicationUser>*@
+@model IEnumerable<ChinUpBoutique.Models.UserRole>
 @{
     ViewBag.Title = "Index";
 }
@@ -19,12 +20,14 @@
             Role Name
         </td>
     </tr>
+
     @foreach (var item in Model)
     {
         <tr>
             <td class="C">
-                @item.UserName
-                @item.Roles.ToList()[0].RoleId
+             @item.UserName : @item.RoleNames.ToList()[0]
+    @*@   @item.UserName
+                @item.Roles.ToList()[0].RoleId@*@
             </td>
         </tr>
     }

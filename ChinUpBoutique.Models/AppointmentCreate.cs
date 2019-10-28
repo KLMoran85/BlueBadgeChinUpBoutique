@@ -8,24 +8,25 @@ using System.Threading.Tasks;
 
 namespace ChinUpBoutique.Models
 {
-    
+
     public class AppointmentCreate
-    {   [Required]
+    {[Required]
         [Display(Name = "Customer's First Name")]
         public string CustomerFirstName { get; set; }
         [Required]
         [Display(Name = "Customer's Last Name")]
         public string CustomerLastName { get; set; }
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
         [Required]
-      
+        [Display(Name = "Customer's Phone Number")]
         public string PhoneNumber { get; set; }
         [Required]
-        [Display (Name = "Choose a Stylist")] 
+        [Display(Name = "Choose a Stylist")]
         public string StylistID { get; set; }
         [Required]
         [Display(Name = "Requested date and time of appointment")]
-      
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy" hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime DateOfAppointment { get; set; }
         
         [Required]

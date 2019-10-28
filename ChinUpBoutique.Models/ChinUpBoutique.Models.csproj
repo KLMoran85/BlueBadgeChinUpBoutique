@@ -55,12 +55,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppointmentCreate.cs" />
+    <Compile Include="AppointmentDetail.cs" />
     <Compile Include="AppointmentListItem.cs" />
     <Compile Include="InventoryCreate.cs" />
     <Compile Include="InventoryDetail.cs" />
     <Compile Include="InventoryEdit.cs" />
     <Compile Include="InventoryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectListItem.cs" />
     <Compile Include="Stylists.cs" />
     <Compile Include="UserReviewCreate.cs" />
     <Compile Include="UserReviewEdit.cs" />
