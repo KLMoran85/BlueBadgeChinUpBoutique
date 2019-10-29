@@ -1,9 +1,12 @@
-﻿using ChinUpBoutique.Models;
+﻿using ChinUpBoutique.Data;
+using ChinUpBoutique.Models;
 using ChinUpBoutique.Services;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,11 +15,12 @@ namespace ChinUpBoutique.WebMVC.Controllers
     public class AppointmentController : Controller
     {
         // GET: Appointment
+        //[Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new AppointmentService(userId);
-            var model = service.GetAppointments();
+            var model = service.GetAllAppointments();
             return View(model);
         }
 
@@ -53,6 +57,16 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
+
+        public ActionResult GetAppointmentsByStylists()
+        {
+            var svc = CreateAppointmentService();
+            var model = svc.GetAppointmentsByStylistID();
+
+            return View(model.ToList());
+
+        }
+
 
         private AppointmentService CreateAppointmentService()
         {

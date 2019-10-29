@@ -41,14 +41,14 @@ namespace ChinUpBoutique.Services
             }
 
         }
-        public IEnumerable<AppointmentListItem> GetAppointments()
+        public IEnumerable<AppointmentListItem> GetAppointmentsByStylistID()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .Appointments
-                        .Where(e => e.CustomerID == _userId)
+                        .Where(e => e.StylistID == _userId.ToString())
                         .Select(
                         e =>
                                 new AppointmentListItem
@@ -78,7 +78,7 @@ namespace ChinUpBoutique.Services
                 var entity =
                     ctx
                         .Appointments
-                        .Single(e => e.CustomerID == _userId);
+                        .Single(e => e.AppointmentID == id);
 
                         return
                             new AppointmentDetail
@@ -94,6 +94,35 @@ namespace ChinUpBoutique.Services
                                 PhoneNumber = entity.PhoneNumber,
                                 CustomerID = entity.CustomerID
                             };
+            }
+        }
+
+        
+
+        public IEnumerable<AppointmentListItem> GetAllAppointments()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                       .Appointments
+                       .Select(e =>
+                            new AppointmentListItem
+                            {
+                                AppointmentID = e.AppointmentID,
+                                DateOfAppointment = e.DateOfAppointment,
+                                StylistID = e.StylistID,
+                                Comment = e.Comment,
+                                CustomerFirstName = e.CustomerFirstName,
+                                CustomerLastName = e.CustomerLastName,
+                                TypeOfAppointment = e.TypeOfAppointment,
+                                EmailAddress = e.EmailAddress,
+                                PhoneNumber = e.PhoneNumber,
+                                CustomerID = e.CustomerID
+                            }
+
+                         );
+                return query.ToArray();
             }
         }
     }
