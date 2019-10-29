@@ -37,8 +37,8 @@ namespace ChinUpBoutique.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-                var service = CreateAppointmentService();
-            
+            var service = CreateAppointmentService();
+
             if (service.CreateAppointment(model))
             {
                 TempData["SaveResult"] = "Your appointment request has been submitted! One of our stylists will reach out to you shortly!";
@@ -50,7 +50,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Details (int id)
+        public ActionResult Details(int id)
         {
             var svc = CreateAppointmentService();
             var model = svc.GetAppointmentById(id);
@@ -73,6 +73,69 @@ namespace ChinUpBoutique.WebMVC.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new AppointmentService(userId);
             return service;
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var service = CreateAppointmentService();
+            var detail = service.GetAppointmentById(id);
+            var model =
+                new AppointmentEdit
+                {
+                    AppointmentID = detail.AppointmentID,
+                    DateOfAppointment = detail.DateOfAppointment,
+                    CustomerFirstName = detail.CustomerFirstName,
+                    CustomerLastName = detail.CustomerLastName,
+                    EmailAddress = detail.EmailAddress,
+                    PhoneNumber = detail.PhoneNumber,
+                    TypeOfAppointment = detail.TypeOfAppointment,
+                    Comment = detail.Comment
+                };
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, AppointmentEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.AppointmentID != id)
+            {
+                ModelState.AddModelError("", "ID Mismatch");
+                return View(model);
+            }
+
+            var service = CreateAppointmentService();
+
+            if (service.UpdateAppointment(model))
+            {
+                TempData["SaveResult"] = "Your Appointment was updated!";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Your Appointment could not be updated!");
+            return View(model);
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateAppointmentService();
+            var model = svc.GetAppointmentById(id);
+
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateAppointmentService();
+
+            service.DeleteAppointment(id);
+
+            TempData["SaveResult"] = "Your Appointment was deleted";
+
+            return RedirectToAction("Index");
         }
     }
 

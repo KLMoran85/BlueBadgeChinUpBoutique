@@ -125,6 +125,43 @@ namespace ChinUpBoutique.Services
                 return query.ToArray();
             }
         }
+
+        public bool UpdateAppointment(AppointmentEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Appointments
+                        .Single(e => e.AppointmentID == model.AppointmentID);
+
+                entity.AppointmentID = model.AppointmentID;
+                entity.DateOfAppointment = model.DateOfAppointment;
+                entity.CustomerFirstName = model.CustomerFirstName;
+                entity.CustomerLastName = model.CustomerLastName;
+                entity.EmailAddress = model.EmailAddress;
+                entity.PhoneNumber = model.PhoneNumber;
+                entity.TypeOfAppointment = model.TypeOfAppointment;
+                entity.Comment = model.Comment;
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+        public bool DeleteAppointment(int AppointmentID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Appointments
+                        .Single(e => e.AppointmentID == AppointmentID);
+                ctx.Appointments.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
 

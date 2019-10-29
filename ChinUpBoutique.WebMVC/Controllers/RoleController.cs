@@ -23,57 +23,27 @@ namespace ChinUpBoutique.WebMVC.Controllers
         //}
         public ActionResult Index()
         {
-            //var appUsers = context.Users.ToList();
-            //var usersToReturn = new List<UserRole>();
-            //foreach (var u in appUsers)
-            //{
-            //    using (var m = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context)))
-            //    {
-            //        var rolesForUser = m.GetRoles(u.Id);
 
-            //        var user = new UserRole
-            //        {
-            //            UserId = u.Id,
-            //            UserName = u.UserName,
-            //            Email = u.Email,
-            //            RoleNames = rolesForUser
-            //        };
-
-            //        usersToReturn.Add(user);
-            //    };
-            //}
-
-            var usersToReturn = new RoleService().GetUserRoles();
-            
+            var service = new RoleService();
+            var usersToReturn = service.GetUserRoles();
+            ViewBag.RoleNames = service.GetIdentityRoles().OrderByDescending(r => r.Name);
                 
-            //users[0].Roles.ToList()[0].RoleId
             return View(usersToReturn);
-            //    if (!User.IsInRole("Admin"))
-            //    {
-            //        return RedirectToAction("Index", "Home");
-            //    }
             
-            //else
-            //{
-            //    return RedirectToAction("View");
-            //}
 
         }
 
-        public ActionResult Edit(string userId)
-        {
-            var Role = new IdentityRole();
-            return View(Role);
-        }
         [HttpPost]
-        public ActionResult Create(IdentityRole Role)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(string userId, string RoleId )
         {
-            //context.Roles.Add(Role);
-            //context.SaveChanges();
+            var service = new RoleService();
+            service.EditIdentyRoles(userId, RoleId);
+
             return RedirectToAction("Index");
         }
 
 
 
     }
-}
+} 

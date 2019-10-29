@@ -85,7 +85,6 @@ namespace ChinUpBoutique.Services
 
             }
 
-                
         }
 
         public bool UpdateInventory(InventoryEdit model)

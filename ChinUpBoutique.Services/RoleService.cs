@@ -26,34 +26,6 @@ namespace ChinUpBoutique.Services
 
         public IEnumerable<UserRole> GetUserRoles()
         {
-            //using (var ctx = new ApplicationDbContext())
-            //{
-
-            //    using (var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx)))
-            //    {
-            //        var query =
-            //  ctx
-            //      .Users
-            //      .Select(
-            //          e =>
-            //      new UserRole
-            //      {
-            //          UserId = e.Id,
-            //          UserName = e.UserName,
-            //          Email = e.Email,
-            //          RoleNames = UserManager.GetRoles(e.Id)
-
-
-            //      }
-
-            //  );
-            //        return query.ToList();
-            //    }
-            //        //string rolename = UserManager.GetRoles(userId).FirstOrDefault();
-
-
-            //}       
-
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -74,9 +46,10 @@ namespace ChinUpBoutique.Services
 
                     usersToReturn.Add(user);
                 };
-            return usersToReturn;
+                return usersToReturn;
             }
         }
+
         public string GetUserRole(string userId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -89,5 +62,31 @@ namespace ChinUpBoutique.Services
             }
         }
 
+        public IEnumerable<IdentityRole> GetIdentityRoles()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Roles.ToList();
+            }
+        }
+
+        public void EditIdentyRoles(string userId, string RoleId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx));
+                var olduser = UserManager.FindById(userId);
+                var oldRoleName = UserManager.GetRoles(userId).FirstOrDefault();
+                var newRoleName = ctx.Roles.SingleOrDefault(r => r.Id == RoleId).Name;
+
+
+                if (oldRoleName != newRoleName)
+                {
+                    UserManager.RemoveFromRole(userId, oldRoleName);
+                    UserManager.AddToRole(userId, newRoleName);
+                    ctx.SaveChanges();
+                }   
+            }
+        }
     }
 }
