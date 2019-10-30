@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ChinUpBoutique.WebMVC.Models;
 using ChinUpBoutique.Data;
+using ChinUpBoutique.Services;
 
 namespace ChinUpBoutique.WebMVC.Controllers
 {
@@ -155,11 +156,15 @@ namespace ChinUpBoutique.WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var startingIndex = model.Email.IndexOf("@");
+                var userName = model.Email.Remove(startingIndex);
+                var user = new ApplicationUser { UserName = userName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     UserManager.AddToRole(user.Id, "Customer");
+                    var createProfile = new ProfilesService(Guid.Parse(user.Id));
+                    createProfile.Create();
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

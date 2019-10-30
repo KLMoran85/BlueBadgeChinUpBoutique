@@ -21,7 +21,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult Create()
         {
             return View();
@@ -57,7 +57,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         private InventoryService CreateInventoryService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
@@ -65,7 +65,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
             var service = new InventoryService(userId);
             return service;
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult Edit(int id)
         {
             var service = CreateInventoryService();
@@ -82,6 +82,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin, StylistUser")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, InventoryEdit model)
@@ -109,7 +110,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult Delete(int id)
         {
             var svc = CreateInventoryService();
@@ -117,7 +118,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]

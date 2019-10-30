@@ -38,6 +38,8 @@ namespace ChinUpBoutique.WebMVC
                 if (chkUser.Succeeded)
                 {
                     var result1 = UserManager.AddToRole(user.Id, "Admin");
+                    context.Profiles.Add(new Profile { UserID = user.Id });
+                    context.SaveChanges();
                 }
             }
 

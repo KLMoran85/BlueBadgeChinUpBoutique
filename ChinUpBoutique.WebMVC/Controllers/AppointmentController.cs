@@ -15,7 +15,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
     public class AppointmentController : Controller
     {
         // GET: Appointment
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult Index()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
@@ -26,8 +26,8 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
         public ActionResult Create()
         {
-            var service = new RoleService();
-            var stylists = service.GetUserRoles().Where(e => e.RoleNames[0] == "StylistUser");
+            var service = new StylistsService(Guid.Parse(User.Identity.GetUserId()));
+            var stylists = service.GetListOfStylists();
             ViewBag.GetListOfStylists = stylists;
             return View(new AppointmentCreate());
         }
@@ -42,14 +42,14 @@ namespace ChinUpBoutique.WebMVC.Controllers
             if (service.CreateAppointment(model))
             {
                 TempData["SaveResult"] = "Your appointment request has been submitted! One of our stylists will reach out to you shortly!";
-                return RedirectToAction("Index");
+                return RedirectToAction("Inventory");
             };
 
             ModelState.AddModelError("", "Appointment could not be submitted at this time.");
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult Details(int id)
         {
             var svc = CreateAppointmentService();
@@ -57,7 +57,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult GetAppointmentsByStylists()
         {
             var svc = CreateAppointmentService();
@@ -67,14 +67,13 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
         }
 
-
         private AppointmentService CreateAppointmentService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new AppointmentService(userId);
             return service;
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult Edit(int id)
         {
             var service = CreateAppointmentService();
@@ -95,6 +94,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult Edit(int id, AppointmentEdit model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -115,7 +115,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
             ModelState.AddModelError("", "Your Appointment could not be updated!");
             return View(model);
         }
-
+        [Authorize(Roles = "Admin, StylistUser")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
@@ -124,6 +124,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
+        [Authorize(Roles = "Admin, StylistUser")]
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]

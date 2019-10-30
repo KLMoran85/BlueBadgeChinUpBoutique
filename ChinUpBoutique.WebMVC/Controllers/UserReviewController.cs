@@ -54,7 +54,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var service = CreateUserReviewService();
@@ -70,6 +70,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
                 };
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, UserReviewEdit model)
@@ -96,7 +97,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
-       
+        [Authorize(Roles = "Admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
@@ -105,7 +106,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -5,22 +5,21 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ChinUpBoutique.Models
 {
-    public class Stylists
-    {   [Display (Name = "Stylist ID")]
+    public class StylistListItem
+    {
+        [Display(Name = "Stylist ID")]
         public string StylistID { get; set; }
-        public ApplicationUser StylistUser { get; set; }
+        //public ApplicationUser StylistUser { get; set; }
         [Display(Name = "UserName")]
         public string StylistUserName { get; set; }
-        public int SelectedStylistID { get; set; }
+        //public int SelectedStylistID { get; set; }
         [Display(Name = "First Name")]
         public string StylistFirstName { get; set; }
         [Display(Name = "Last Name")]
         public string StylistLastName { get; set; }
-      
-
+        public byte[] Photo { get; set; }
     }
 }
