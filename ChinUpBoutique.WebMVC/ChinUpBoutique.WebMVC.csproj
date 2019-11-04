@@ -374,6 +374,8 @@
     <Content Include="Views\Appointment\Edit.cshtml" />
     <Content Include="Views\Appointment\Delete.cshtml" />
     <Content Include="Views\Stylist\Index.cshtml" />
+    <Content Include="Views\Stylist\Details.cshtml" />
+    <Content Include="Views\Stylist\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

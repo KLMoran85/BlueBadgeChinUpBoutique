@@ -130,5 +130,4 @@ namespace ChinUpBoutique.WebMVC.Controllers
         }
     }
     
-       
 }

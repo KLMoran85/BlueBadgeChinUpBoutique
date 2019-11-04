@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChinUpBoutique.Data
 {
-    public enum ItemType { Tops, Bottoms, Pants, Jeans, Shorts, Skirts, Dresses, Suits, Shoes, Bags }
+    public enum ItemType { Tops, Jackets, Pants, Jeans, Shorts, Skirts, Dresses, Suits, Shoes, Bags }
     public class Inventory
     {
         [Key]

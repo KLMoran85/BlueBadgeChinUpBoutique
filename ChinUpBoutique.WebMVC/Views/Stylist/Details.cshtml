@@ -1,0 +1,47 @@
+﻿@model ChinUpBoutique.Models.StylistDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StylistDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StylistID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StylistID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StylistUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StylistUserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StylistProfile.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StylistProfile.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StylistProfile.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StylistProfile.LastName)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

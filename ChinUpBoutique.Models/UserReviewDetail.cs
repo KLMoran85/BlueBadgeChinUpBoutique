@@ -9,8 +9,9 @@ namespace ChinUpBoutique.Models
 {
     public class UserReviewDetail
     {
-        
+        [Display(Name = "Review ID")]
         public int ReviewID { get; set; }
+        [Display(Name = "Stylist ID")]
         public string StylistID { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }

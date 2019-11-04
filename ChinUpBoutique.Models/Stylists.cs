@@ -13,7 +13,7 @@ namespace ChinUpBoutique.Models
     {   [Display (Name = "Stylist ID")]
         public string StylistID { get; set; }
         public ApplicationUser StylistUser { get; set; }
-        [Display(Name = "UserName")]
+        [Display(Name = "User Name")]
         public string StylistUserName { get; set; }
         public int SelectedStylistID { get; set; }
         [Display(Name = "First Name")]

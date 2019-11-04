@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ChinUpBoutique.Services
 {
     public class ProfilesService
@@ -59,6 +60,27 @@ namespace ChinUpBoutique.Services
                 return Profile;
             }
         }
+
+        public bool UpdateProfile(ProfileEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Profiles
+                    .Single(e => e.UserID == model.UserID);
+
+                entity.UserID = model.UserID;
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+                entity.PhoneNumber = model.PhoneNumber;
+                entity.Email = model.Email;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+    
         
     }
 }

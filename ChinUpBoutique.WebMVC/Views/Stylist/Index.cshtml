@@ -18,9 +18,6 @@
             @Html.DisplayNameFor(model => model.StylistUserName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SelectedStylistID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.StylistFirstName)
         </th>
         <th>
@@ -38,9 +35,6 @@
             @Html.DisplayFor(modelItem => item.StylistUserName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SelectedStylistID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.StylistFirstName)
         </td>
         <td>
@@ -48,7 +42,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details",new { id=item.StylistID }, new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>

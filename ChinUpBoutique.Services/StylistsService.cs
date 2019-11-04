@@ -61,12 +61,15 @@ namespace ChinUpBoutique.Services
                     .Users
                     .Single(e => e.Id == id.ToString());
 
-                var service = new StylistDetail
+                var service = new ProfilesService(_userId);
+                var stylist = new StylistDetail
                 {
                     StylistID = entity.Id,
-                    StylistUserName = entity.UserName
+                    StylistUserName = entity.UserName,
+                    StylistProfile = service.GetProfileByUserID(_userId.ToString())
+                    
                 };
-                return service;
+                return stylist;
             }
         }
 
