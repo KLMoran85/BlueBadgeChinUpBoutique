@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ChinUpBoutique.Models
 {
@@ -27,5 +28,6 @@ namespace ChinUpBoutique.Models
         [Required]
         [Display(Name = "Item Type")]
         public ItemType TypeOfItem { get; set; }
+        public HttpPostedFileBase Photo { get; set; }
     }
 }

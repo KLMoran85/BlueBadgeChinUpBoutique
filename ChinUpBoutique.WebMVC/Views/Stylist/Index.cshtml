@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ChinUpBoutique.Models.StylistListItem>
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<ChinUpBoutique.Models.StylistListItem>
 
 @{
     ViewBag.Title = "Index";
@@ -11,9 +12,7 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.StylistID)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.StylistUserName)
         </th>
@@ -28,9 +27,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StylistID)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.StylistUserName)
         </td>
@@ -41,9 +38,11 @@
             @Html.DisplayFor(modelItem => item.StylistLastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @if (item.StylistID == User.Identity.GetUserId())
+            {
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) <span>|</span>
+            }
             @Html.ActionLink("Details", "Details",new { id=item.StylistID }, new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

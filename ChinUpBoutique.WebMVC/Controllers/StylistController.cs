@@ -24,6 +24,8 @@ namespace ChinUpBoutique.WebMVC.Controllers
             var svc = new StylistsService(Guid.Parse(User.Identity.GetUserId()));
             var model = svc.GetStylistById(id);
             var profilesvc = new ProfilesService(Guid.Parse(User.Identity.GetUserId()));
+            var userreviewsvc = new UserReviewService(Guid.Parse(User.Identity.GetUserId()));
+            model.UserReviewListItem = userreviewsvc.GetUserReviewsByStylistID(id.ToString()).ToList();
             model.StylistProfile = profilesvc.GetProfileByUserID(id.ToString());
             return View(model);
         }

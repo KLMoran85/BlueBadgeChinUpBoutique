@@ -19,6 +19,7 @@ namespace ChinUpBoutique.Data
         public double ItemPrice { get; set; }
         [Required]
         public ItemType TypeOfItem { get; set; }
+        public byte[] Photo { get; set; }
 
     }
 }

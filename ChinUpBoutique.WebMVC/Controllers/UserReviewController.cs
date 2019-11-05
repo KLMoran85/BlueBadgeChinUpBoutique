@@ -28,13 +28,13 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserReviewCreate model)
+        public ActionResult Create(string id, string title, string content)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View();
             {
                 var service = CreateUserReviewService();
 
-                if (service.CreateUserReview(model))
+                if (service.CreateUserReview(new UserReviewCreate { StylistID = id, Title = title, Content = content}))
                 {
                     TempData["SaveResult"] = "Your review was created!";
                     return RedirectToAction("Index");
@@ -42,7 +42,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
                 ModelState.AddModelError("", "Note could not be created.");
 
-                return View(model);
+                return View();
             }
           
         }

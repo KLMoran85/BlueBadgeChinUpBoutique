@@ -23,6 +23,7 @@ namespace ChinUpBoutique.Services
                 new UserReview()
                 {
                     OwnerID = _userId,
+                    StylistID = model.StylistID,
                     Title = model.Title,
                     Content = model.Content,
                     CreatedUtc = DateTimeOffset.Now
@@ -60,7 +61,32 @@ namespace ChinUpBoutique.Services
             }
         }
 
-        public UserReviewDetail GetUserReviewById(int id)
+        public IEnumerable<UserReviewListItem> GetUserReviewsByStylistID(string StylistID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                       .UserReviews
+                       .Where(e => e.StylistID == StylistID)
+
+                       .Select(
+                          e =>
+                                new UserReviewListItem
+                                {
+                                    ReviewID = e.ReviewID,
+                                    StylistID = e.StylistID,
+                                    Title = e.Title,
+                                    Content = e.Content,
+                                    CreatedUtc = e.CreatedUtc
+                                }
+
+                          );
+                return query.ToArray();
+            }
+        }
+
+            public UserReviewDetail GetUserReviewById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {

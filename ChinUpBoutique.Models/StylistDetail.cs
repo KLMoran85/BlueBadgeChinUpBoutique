@@ -17,5 +17,7 @@ namespace ChinUpBoutique.Models
         [Display(Name = "Profile")]
         public Profile StylistProfile{ get; set; }
 
+        public List<UserReviewListItem> UserReviewListItem { get; set; }
+
     }
 }

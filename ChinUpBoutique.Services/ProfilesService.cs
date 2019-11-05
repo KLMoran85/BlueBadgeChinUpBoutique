@@ -76,6 +76,16 @@ namespace ChinUpBoutique.Services
                 entity.PhoneNumber = model.PhoneNumber;
                 entity.Email = model.Email;
 
+                if(model.Photo != null)
+                {
+
+                MemoryStream target = new MemoryStream();
+                model.Photo.InputStream.CopyTo(target);
+                byte[] data = target.ToArray();
+
+                entity.Photo = data;
+                }
+
                 return ctx.SaveChanges() == 1;
             }
         }

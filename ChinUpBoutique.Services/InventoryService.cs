@@ -2,6 +2,7 @@
 using ChinUpBoutique.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,6 +103,16 @@ namespace ChinUpBoutique.Services
                 entity.ItemDescription = model.ItemDescription;
                 entity.ItemPrice = model.ItemPrice;
                 entity.TypeOfItem = model.TypeOfItem;
+
+                if(model.Photo != null)
+                {
+
+                MemoryStream target = new MemoryStream();
+                model.Photo.InputStream.CopyTo(target);
+                byte[] data = target.ToArray();
+
+                entity.Photo = data;
+                }
 
                 return ctx.SaveChanges() == 1;
             }

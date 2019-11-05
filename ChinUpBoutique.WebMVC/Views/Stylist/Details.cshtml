@@ -1,4 +1,6 @@
 ﻿@model ChinUpBoutique.Models.StylistDetail
+@using Microsoft.AspNet.Identity
+
 
 @{
     ViewBag.Title = "Details";
@@ -7,15 +9,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>StylistDetail</h4>
+    <h4>Stylist Detail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.StylistID)
+            @Html.HiddenFor(model => model.StylistID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StylistID)
+            <img class="" src="data:image/jpg;base64,@Convert.ToBase64String(Model.StylistProfile.Photo)" />
         </dd>
 
         <dt>
@@ -41,7 +43,81 @@
         </dd>
     </dl>
 </div>
+
+
+
+
+
+
+@using (Html.BeginForm("Create", "UserReview", new { id = Model.StylistID }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Create User Review</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.StylistID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StylistID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StylistID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Title</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input name="title" type="text" />
+                @*@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Content</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input name="content" type="text" />
+                @*@Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@foreach (var item in Model.UserReviewListItem)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StylistID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedUtc)
+        </td>
+    </tr>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @if (Model.StylistID == User.Identity.GetUserId())
+    {
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) <span>|</span>
+}
     @Html.ActionLink("Back to List", "Index")
 </p>
