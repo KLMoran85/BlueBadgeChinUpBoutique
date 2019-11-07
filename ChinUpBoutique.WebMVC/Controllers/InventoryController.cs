@@ -43,7 +43,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
                 return RedirectToAction("Index");
             };
-            return View(model);
+            //return View(model);
 
             ModelState.AddModelError("", "Inventory could not be created.");
 
@@ -101,7 +101,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
             {
                 TempData["SaveRestult"] = "Your Inventory item was updated.";
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = id});
             }
 
             ModelState.AddModelError("", "Your Inventory item could not be updated.");
@@ -132,7 +132,6 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
-
 
     }
 }

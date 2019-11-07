@@ -10,41 +10,47 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.StylistUserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StylistFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StylistLastName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.StylistUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StylistFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StylistLastName)
-        </td>
-        <td>
-            @if (item.StylistID == User.Identity.GetUserId())
-            {
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) <span>|</span>
-            }
-            @Html.ActionLink("Details", "Details",new { id=item.StylistID }, new { /* id=item.PrimaryKey */ }) |
-        </td>
-    </tr>
-}
+<div style="display: flex; flex-wrap:wrap">
+    @*<table class="table">
+        <tr>
 
-</table>
+            <th>
+                @Html.DisplayNameFor(model => model.StylistUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StylistFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StylistLastName)
+            </th>
+            <th></th>
+        </tr>*@
+
+    @foreach (var item in Model)
+    {
+        <div class="stylists">
+        
+            <img class="stylistimg" src="data:image/jpg;base64,@Convert.ToBase64String(item.Photo)" />
+            <h3>
+                @Html.DisplayFor(modelItem => item.StylistFirstName)
+            </h3>
+            <h3>
+                @Html.DisplayFor(modelItem => item.StylistLastName)
+            </h3>
+            <h3>
+              Stylist's User Name:  @Html.DisplayFor(modelItem => item.StylistUserName) 
+            </h3>
+            <h3>
+                @if (item.StylistID == User.Identity.GetUserId())
+                {
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) <span>|</span>
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.StylistID }, new { /* id=item.PrimaryKey */ }) |
+            </h3>
+        @*</tr>*@
+    </div>
+    }
+
+@*</table>*@
+</div>

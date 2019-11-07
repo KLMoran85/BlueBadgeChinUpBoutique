@@ -13,6 +13,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
     public class UserReviewController : Controller
     {
         // GET: UserReview
+        [Authorize(Roles = "Admin, StylistUser")]
         public ActionResult Index()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
@@ -70,7 +71,6 @@ namespace ChinUpBoutique.WebMVC.Controllers
                 };
             return View(model);
         }
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, UserReviewEdit model)

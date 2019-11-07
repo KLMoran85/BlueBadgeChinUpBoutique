@@ -27,5 +27,6 @@ namespace ChinUpBoutique.Models
         [Required]
         [Display(Name = "Item Type")]
         public ItemType TypeOfItem { get; set; }
+        public byte[] Photo { get; set; }
     }
 }

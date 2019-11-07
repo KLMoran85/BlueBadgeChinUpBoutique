@@ -21,9 +21,9 @@
         @TempData["SaveResult"]
     </div>
     }
-
-<table class="table">
-    <tr>
+<div style="display: flex; flex-wrap:wrap">
+@*<table class="table">
+    @*<tr>
         <th>
             @Html.DisplayNameFor(model => model.ItemID)
         </th>
@@ -43,34 +43,37 @@
             @Html.DisplayNameFor(model => model.TypeOfItem)
         </th>
         <th></th>
-    </tr>
+    </tr>*@
 
 @foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ItemID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ItemName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SkuNumber)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ItemDescription)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ItemPrice)
-    </td>
-    <td>
+<div class="inventory">
+    @if (item.Photo != null)
+    {
+        <img class="inventoryImg" src="data:image/jpg;base64,@Convert.ToBase64String(item.Photo)" />
+    }
+    <p class="inventoryType">
         @Html.DisplayFor(modelItem => item.TypeOfItem)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ItemID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ItemID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ItemID })
-    </td>
-</tr>
+    </p>
+    <h3>
+        @Html.DisplayFor(modelItem => item.ItemName)
+    </h3>
+    <p>
+        @Html.DisplayFor(modelItem => item.ItemDescription)
+    </p>
+    <p>
+        $@Html.DisplayFor(modelItem => item.ItemPrice)
+    </p>
+    <p>
+        @if (User.IsInRole("StylistUser") || User.IsInRole("Admin"))
+        {
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.ItemID }) <span>|</span>
+            @Html.ActionLink("Delete", "Delete", new { id = item.ItemID })<span>|</span>
+        }
+    @Html.ActionLink("Details", "Details", new { id = item.ItemID })
+</p>
+</div>
 }
 
-</table>
+@*</table>*@
+    </div>

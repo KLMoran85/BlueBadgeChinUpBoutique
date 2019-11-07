@@ -56,7 +56,8 @@ namespace ChinUpBoutique.Services
                                     SkuNumber = e.SkuNumber,
                                     ItemDescription = e.ItemDescription,
                                     ItemPrice = e.ItemPrice,
-                                    TypeOfItem = e.TypeOfItem
+                                    TypeOfItem = e.TypeOfItem,
+                                    Photo = e.Photo
                                 }
 
                          );
@@ -76,6 +77,7 @@ namespace ChinUpBoutique.Services
                 return
                     new InventoryDetail
                     {
+                        Photo = entity.Photo,
                         ItemID = entity.ItemID,
                         ItemName = entity.ItemName,
                         SkuNumber = entity.SkuNumber,

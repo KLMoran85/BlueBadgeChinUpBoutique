@@ -42,7 +42,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
             if (service.CreateAppointment(model))
             {
                 TempData["SaveResult"] = "Your appointment request has been submitted! One of our stylists will reach out to you shortly!";
-                return RedirectToAction("Inventory");
+                return RedirectToAction("Index","Inventory");
             };
 
             ModelState.AddModelError("", "Appointment could not be submitted at this time.");

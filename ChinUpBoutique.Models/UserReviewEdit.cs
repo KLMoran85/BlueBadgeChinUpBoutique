@@ -10,6 +10,7 @@ namespace ChinUpBoutique.Models
     public class UserReviewEdit
     {   [Key]
         [Display(Name = "Review ID")]
+        public Guid OwnerID { get; set; }
         public int ReviewID { get; set; }
         [Display(Name = "Stylist ID")]
         public string StylistID { get; set; }

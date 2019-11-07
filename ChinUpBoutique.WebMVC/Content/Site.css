@@ -2,8 +2,17 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #B3EACD;
+    font-family: 'Dancing Script', cursive;
+    font-size: x-large;
 }
 
+h1 {
+    font-family: 'Dancing Script', cursive;
+}
+
+/*.jumbotron {
+    background: url('Assets/boutiquephoto.jpeg');
+}*/
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -22,4 +31,32 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.inventory{
+    width: 350px;
+    border: 1px solid grey;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    align-content: center;
+    
+}
+.inventoryImg{
+    width:200px;
+    border-color: black;
+    border: 1px solid black;
+}
+.inventoryType{
+    font-size:8pt;
+    color: grey;
+}
+
+.stylists{
+    margin: 10px;
+    padding: 20px;
+}
+.stylistimg{
+    width: 350px;
+    border-color: black;
+    border: 2px solid black;
 }

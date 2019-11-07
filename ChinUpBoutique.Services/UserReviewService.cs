@@ -48,7 +48,7 @@ namespace ChinUpBoutique.Services
                        .Select(
                           e =>
                                 new UserReviewListItem
-                                {
+                                {   OwnerID = e.OwnerID,
                                     ReviewID = e.ReviewID,
                                     StylistID = e.StylistID,
                                     Title = e.Title,
@@ -73,7 +73,7 @@ namespace ChinUpBoutique.Services
                        .Select(
                           e =>
                                 new UserReviewListItem
-                                {
+                                {   OwnerID = e.OwnerID,
                                     ReviewID = e.ReviewID,
                                     StylistID = e.StylistID,
                                     Title = e.Title,
@@ -96,7 +96,8 @@ namespace ChinUpBoutique.Services
                         .Single(e => e.ReviewID == id && e.OwnerID == _userId);
 
                 return new UserReviewDetail
-                {
+                {   
+                    OwnerID = entity.OwnerID,
                     ReviewID = entity.ReviewID,
                     StylistID = entity.StylistID,
                     Title = entity.Title,
@@ -115,7 +116,7 @@ namespace ChinUpBoutique.Services
                     ctx
                         .UserReviews
                         .Single(e => e.ReviewID == model.ReviewID && e.OwnerID == _userId);
-
+                entity.OwnerID = model.OwnerID;
                 entity.ReviewID = model.ReviewID;
                 entity.StylistID = model.StylistID;
                 entity.Title = model.Title;

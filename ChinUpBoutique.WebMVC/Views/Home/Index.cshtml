@@ -2,29 +2,63 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Chin Up Boutique</h1>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<div class="jumbotron jumbotron-fluid" style="background: url(../../Content/Assets/boutiquestorefrontcropped.jfif) no-repeat; background-position: center top; background-size: cover; height: 500px">
+    <div class="boxed">
+        <h1 class="boutiquename text-center">Chin Up Boutique</h1>
+        </div>
+    </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Meet Our Current Stylists</h2>
+        <div class="boxed">
+            <h2>Meet Our Current Stylists</h2>
+        </div>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            View the profiles of our Indianapolis Fashion stylists.  They each feel passionately about what fashion
+            can do for an individual's confidence level.  Let them make your client feel fabulous!
         </p>
         <p><a class="btn btn-default" href="/Stylist/Index"> See their exquisite sense of style! &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Schedule an Appointment</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="/Appointment/Create">Come play dress up with us! &raquo;</a></p>
-    </div>
+        <div class="boxed">
+            <h2>Schedule an Appointment</h2>
+            </div>
+            <p>Request an appointment with one of our passionate stylists!  They will reach out to you or your client on an individual basis to confirm appointment date and time.</p>
+            <p><a class="btn btn-default" href="/Appointment/Create">Come play dress up with us! &raquo;</a></p>
+        </div>
     <div class="col-md-4">
-        <h2>View Our Current Inventory</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="/Inventory/Index">See what we can offer you! &raquo;</a></p>
-    </div>
-</div>
+        <div class="boxed">
+            <h2>View Our Current Inventory</h2>
+            </div>
+                <p>
+                    View some of our current inventory that we have in stock.  The prices are based on value and not official price tag.  If your client wishes to purchase a specific piece, the
+                    tag on the item in the store will hold the official price.
+                </p>
+                <p><a class="btn btn-default" href="/Inventory/Index">See what we can offer you! &raquo;</a></p>
+            </>
+        </div>
+
+<style>
+body {
+    font-family: 'Dancing Script', 'bold';
+    font-size: x-large;
+}
+
+.jumbotron{
+   border-color: black;
+   border: 2px solid black;
+   
+
+}
+
+.boxed {
+    border: 1px solid black;
+    text-align: center;
+    background-color: white;
+}
+
+
+.boutiquename {
+    color: white;
+}
+</style>

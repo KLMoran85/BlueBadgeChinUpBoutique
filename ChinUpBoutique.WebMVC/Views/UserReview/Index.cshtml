@@ -53,9 +53,12 @@
             @Html.DisplayFor(modelItem => item.CreatedUtc)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReviewID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ReviewID}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewID })
+            @if (User.IsInRole("StylistUser") || User.IsInRole("Admin"))
+            {
+            @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID }) <span>|</span>
+            @Html.ActionLink("Details", "Details", new { id = item.ReviewID }) <span>|</span>
+            @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
+            }
         </td>
     </tr>
 }
