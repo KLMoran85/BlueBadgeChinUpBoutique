@@ -1,7 +1,10 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title</h2>
+
+<div class="boxed">
+<h2 style="font-weight: bold">@ViewBag.Title</h2>
+</div>
 <h3>@ViewBag.Message</h3>
 
 <p>The Chin Up Boutique was started in late 2018 by Katie and Chris Moran.  The two of them wanted to create a fun, safe space where individuals that are down on their luck
@@ -12,12 +15,29 @@
 
 <style>
 
+
+
     body {
     font-family: 'Dancing Script', 'bold';
     font-size: x-large;
     text-align: center;
     }
     
+    .boxed {
+    border: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+    background-color: white;
+   }
+
+    h2 {
+       font-size: 45px;
+    }
+
+    h3 {
+       text-decoration: underline;
+    }
+
     p {
         padding-top: 50px;
     }

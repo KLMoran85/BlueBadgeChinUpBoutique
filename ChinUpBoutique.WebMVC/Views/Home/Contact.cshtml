@@ -1,7 +1,9 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title</h2>
+    <div class="boxed">
+        <h2 style="font-weight: bold">@ViewBag.Title</h2>
+    </div>
 <h3>@ViewBag.Message</h3>
 
 <address>
@@ -14,3 +16,34 @@
 <address>
     <strong>Boutique Email</strong>   <a href="mailto:Support@example.com">welovefashion@gmail.com</a><br />
 </address>
+
+<style>
+
+    body {
+    font-family: 'Dancing Script', 'bold';
+    font-size: x-large;
+    text-align: center;
+    }
+
+    .boxed {
+        border: 1px solid black;
+        text-align: center;
+        font-weight: bold;
+        background-color: white;
+    }
+
+    h2 {
+       font-size: 45px;
+    }
+
+    h3 {
+       font-size: xx-large;
+       text-decoration: underline;
+    }
+
+    address {
+        padding-top: 50px;
+    }
+
+
+</style>

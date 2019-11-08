@@ -38,7 +38,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
                 if (service.CreateUserReview(new UserReviewCreate { StylistID = id, Title = title, Content = content}))
                 {
                     TempData["SaveResult"] = "Your review was created!";
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", "Stylist", new { id = id });
                 };
 
                 ModelState.AddModelError("", "Note could not be created.");
@@ -62,7 +62,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
             var detail = service.GetUserReviewById(id);
             var model =
                 new UserReviewEdit
-                {
+                {   OwnerID = detail.OwnerID,
                     ReviewID = detail.ReviewID,
                     StylistID = detail.StylistID,
                     Title = detail.Title,

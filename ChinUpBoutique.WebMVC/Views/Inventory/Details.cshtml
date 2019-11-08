@@ -13,7 +13,7 @@
 
         <dd>
             @if(Model.Photo != null) {
-            <img class="" src="data:image/jpg;base64,@Convert.ToBase64String(Model.Photo)" />
+            <img class="individualimg" src="data:image/jpg;base64,@Convert.ToBase64String(Model.Photo)" />
             }
         </dd>
         <dt>
@@ -63,3 +63,12 @@
     }
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<style>
+
+ .individualimg {
+    border-color: black;
+    border: 1px solid black;
+ }
+
+</style>

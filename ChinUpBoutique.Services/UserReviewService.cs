@@ -3,8 +3,10 @@ using ChinUpBoutique.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNet.Identity;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ChinUpBoutique.Services
 {
@@ -131,13 +133,20 @@ namespace ChinUpBoutique.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var m = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx));
+                var rolesForUser = m.GetRoles(_userId.ToString()).First();
+
+
                 var entity =
                     ctx
                         .UserReviews
-                        .Single(e => e.ReviewID == ReviewID && e.OwnerID == _userId);
+                        .Single(e => e.ReviewID == ReviewID);
+                if(entity.OwnerID == _userId || rolesForUser == "Admin" )
+                {
 
                 ctx.UserReviews.Remove(entity);
 
+                }
                 return ctx.SaveChanges() == 1;
             }
         }

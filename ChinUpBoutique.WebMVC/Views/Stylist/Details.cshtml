@@ -9,39 +9,38 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Stylist Detail</h4>
+    <h3>Stylist Detail</h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.HiddenFor(model => model.StylistID)
         </dt>
+            <dd>
+                <img class="individualimg" src="data:image/jpg;base64,@Convert.ToBase64String(Model.StylistProfile.Photo)" />
+            </dd>
 
-        <dd>
-            <img class="" src="data:image/jpg;base64,@Convert.ToBase64String(Model.StylistProfile.Photo)" />
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StylistUserName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StylistUserName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StylistUserName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StylistProfile.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StylistUserName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StylistProfile.FirstName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StylistProfile.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StylistProfile.LastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StylistProfile.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StylistProfile.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StylistProfile.LastName)
-        </dd>
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.StylistProfile.LastName)
+            </dd>
+</dl>
 </div>
 
 
@@ -54,7 +53,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Create User Review</h4>
+        <h3>Create User Review</h3>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @*<div class="form-group">
@@ -109,7 +108,29 @@
             @Html.DisplayFor(modelItem => item.CreatedUtc)
         </td>
         <td>
+            @if (User.IsInRole("Admin"))
+            {
+                using (Html.BeginForm("Delete", "UserReview", new { id = item.ReviewID }))
+                {
+                    @Html.AntiForgeryToken()
 
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default" />
+                    </div>
+                }
+            }
+
+            @*@if (item.OwnerID == User.Identity.GetUserId())
+            {
+                using (Html.BeginForm("Edit", "UserReview", new { id = item.OwnerID }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Edit" class="btn btn-default" />
+                    </div>
+                }*@
+            }
         </td>
     </tr>
 }
@@ -117,6 +138,31 @@
     @if (Model.StylistID == User.Identity.GetUserId())
     {
         @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) <span>|</span>
-}
-    @Html.ActionLink("Back to List", "Index")
+    }
+    @Html.ActionLink("Back to List", "Index")<span>|</span>
+
+    
 </p>
+
+<style>
+body {
+    font-family: 'Dancing Script', 'bold';
+    font-size: x-large;
+}
+
+.individualimg {
+    border-color: black;
+    border: 2px solid black;
+    align-items: center;
+}
+
+h3 {
+   font-weight: bold;
+}
+
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+</style>

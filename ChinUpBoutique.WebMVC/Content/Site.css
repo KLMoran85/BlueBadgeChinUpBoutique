@@ -32,15 +32,16 @@ select,
 textarea {
     max-width: 280px;
 }
-.inventory{
+.inventory {
     width: 350px;
     border: 1px solid grey;
-    margin: 10px;
-    padding: 10px;
+    margin: 30px;
+    padding: 50px;
     background-color: white;
     align-content: center;
-    
+    justify-content: center;
 }
+
 .inventoryImg{
     width:200px;
     border-color: black;
@@ -59,4 +60,8 @@ textarea {
     width: 350px;
     border-color: black;
     border: 2px solid black;
+}
+
+footer {
+    text-align: center;
 }

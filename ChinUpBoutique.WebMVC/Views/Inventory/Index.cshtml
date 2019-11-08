@@ -21,29 +21,7 @@
         @TempData["SaveResult"]
     </div>
     }
-<div style="display: flex; flex-wrap:wrap">
-@*<table class="table">
-    @*<tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SkuNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TypeOfItem)
-        </th>
-        <th></th>
-    </tr>*@
+<div style="display: flex; flex-wrap:wrap; justify-content:center">
 
 @foreach (var item in Model) {
 <div class="inventory">

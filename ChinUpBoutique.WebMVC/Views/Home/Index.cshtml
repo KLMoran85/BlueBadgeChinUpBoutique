@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-4">
         <div class="boxed">
-            <h2>Meet Our Current Stylists</h2>
+            <strong>Meet Our Current Stylists</strong>
         </div>
         <p>
             View the profiles of our Indianapolis Fashion stylists.  They each feel passionately about what fashion
@@ -21,14 +21,18 @@
     </div>
     <div class="col-md-4">
         <div class="boxed">
-            <h2>Schedule an Appointment</h2>
-            </div>
-            <p>Request an appointment with one of our passionate stylists!  They will reach out to you or your client on an individual basis to confirm appointment date and time.</p>
-            <p><a class="btn btn-default" href="/Appointment/Create">Come play dress up with us! &raquo;</a></p>
+            <strong>Schedule an Appointment</strong>
         </div>
+        <p>Request an appointment with one of our passionate stylists!  They will reach out to you or your client on an individual basis to confirm appointment date and time.</p>
+        <p><a class="btn btn-default" href="/Appointment/Create">Come play dress up with us! &raquo;</a></p>
+        @if (User.IsInRole("StylistUser"))
+        {
+            <p><a class="btn btn-default" href="/Appointment/GetAppointmentsByStylists">View Your Appointments, Stylists! &raquo;</a></p>
+        }
+    </div>
     <div class="col-md-4">
         <div class="boxed">
-            <h2>View Our Current Inventory</h2>
+            <strong>View Our Current Inventory</strong>
             </div>
                 <p>
                     View some of our current inventory that we have in stock.  The prices are based on value and not official price tag.  If your client wishes to purchase a specific piece, the
@@ -48,7 +52,6 @@ body {
    border-color: black;
    border: 2px solid black;
    
-
 }
 
 .boxed {
@@ -57,8 +60,17 @@ body {
     background-color: white;
 }
 
+.btn-default {
+    font-size: medium;
+    font-weight: bold;
+    justify-content: center;
+}
 
 .boutiquename {
     color: white;
+}
+
+footer {
+    text-align: center;
 }
 </style>
