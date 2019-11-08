@@ -9,12 +9,13 @@
 <h2>Details</h2>
 
 <div>
-    <h3>Stylist Detail</h3>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.HiddenFor(model => model.StylistID)
-        </dt>
+    <div class="container">
+        <h3>Stylist Detail</h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.HiddenFor(model => model.StylistID)
+            </dt>
             <dd>
                 <img class="individualimg" src="data:image/jpg;base64,@Convert.ToBase64String(Model.StylistProfile.Photo)" />
             </dd>
@@ -40,11 +41,12 @@
             <dd>
                 @Html.DisplayFor(model => model.StylistProfile.LastName)
             </dd>
-</dl>
+        </dl>
+    </div>
 </div>
 
 
-
+<hr />
 
 
 
@@ -54,7 +56,7 @@
 
     <div class="form-horizontal">
         <h3>Create User Review</h3>
-        <hr />
+       
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @*<div class="form-group">
                 @Html.LabelFor(model => model.StylistID, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -95,9 +97,9 @@
 
 @foreach (var item in Model.UserReviewListItem)
 {
+
+<table>
     <tr>
-       
-       
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -120,20 +122,15 @@
                 }
             }
 
-            @*@if (item.OwnerID == User.Identity.GetUserId())
+            @if (item.OwnerID == Guid.Parse(User.Identity.GetUserId()))
             {
-                using (Html.BeginForm("Edit", "UserReview", new { id = item.OwnerID }))
-                {
-                    @Html.AntiForgeryToken()
-
-                    <div class="form-actions no-color">
-                        <input type="submit" value="Edit" class="btn btn-default" />
-                    </div>
-                }*@
+                @Html.ActionLink("Edit Review", "Edit", "UserReview", new { id = item.ReviewID },new { htmlAttributes = new { @class = "btn" } })
             }
         </td>
     </tr>
+</table>
 }
+
 <p>
     @if (Model.StylistID == User.Identity.GetUserId())
     {
@@ -150,19 +147,39 @@ body {
     font-size: x-large;
 }
 
+.container {
+    margin: 0 auto;
+}
 .individualimg {
     border-color: black;
     border: 2px solid black;
     align-items: center;
+    margin: 0 auto;
+}
+
+.form-horizontal {
+    align-content: center;
+}
+
+h2 {
+     text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    
+
 }
 
 h3 {
    font-weight: bold;
+   text-align: center;
 }
 
-td {
-    padding-top: .5em;
-    padding-bottom: .5em;
+
+
+table td {
+    border: 1px solid black;
+    background: white;
+    margin: 0 auto;
 }
 
 </style>

@@ -55,7 +55,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
 
             return View(model);
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var service = CreateUserReviewService();
@@ -90,7 +90,7 @@ namespace ChinUpBoutique.WebMVC.Controllers
             {
                 TempData["SaveResult"] = "Your review was updated.";
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Stylist", new { id = model.StylistID });
             }
 
             ModelState.AddModelError("", "Your review could not be updated.");
